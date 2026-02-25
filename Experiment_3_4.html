@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Portal - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #34495e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .box {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .job {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        input, select, textarea {
+            padding: 8px;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Job Portal</h1>
+    <p>Find Your Dream Job</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Jobs</a>
+    <a href="#">Companies</a>
+    <a href="#">Login</a>
+</nav>
+
+<div class="container">
+
+    <div class="box">
+        <h2>Latest Jobs</h2>
+
+        <div id="jobList">
+            <div class="job">
+                <h3>Web Developer</h3>
+                <p>Location: Chandigarh</p>
+            </div>
+
+            <div class="job">
+                <h3>Software Engineer</h3>
+                <p>Location: Bangalore</p>
+            </div>
+
+            <div class="job">
+                <h3>Data Analyst</h3>
+                <p>Location: Delhi</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXP 3 -->
+    <div class="box">
+        <h2>Apply for Job</h2>
+        <form id="applyForm">
+            <label>Full Name:</label>
+            <input type="text" id="name" required>
+
+            <label>Email:</label>
+            <input type="email" id="email" required>
+
+            <label>Select Job:</label>
+            <select id="job">
+                <option>Web Developer</option>
+                <option>Software Engineer</option>
+                <option>Data Analyst</option>
+            </select>
+
+            <br><br>
+            <button type="submit">Apply</button>
+        </form>
+    </div>
+
+    <div class="box">
+        <h2>Applicant Profile</h2>
+        <div id="profile">
+            <p>No application submitted yet.</p>
+        </div>
+    </div>
+
+    <!-- EXP 4 -->
+    <div class="box">
+        <h2>Post a New Job</h2>
+        <form id="postJobForm">
+            <label>Job Title:</label>
+            <input type="text" id="newTitle" required>
+
+            <label>Location:</label>
+            <input type="text" id="newLocation" required>
+
+            <br><br>
+            <button type="submit">Post Job</button>
+        </form>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Job Portal. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+document.getElementById("applyForm").addEventListener("submit", function(e){
+    e.preventDefault()
+
+    const name = document.getElementById("name").value
+    const email = document.getElementById("email").value
+    const job = document.getElementById("job").value
+
+    document.getElementById("profile").innerHTML = `
+        <h3>${name}</h3>
+        <p>Email: ${email}</p>
+        <p>Applied For: ${job}</p>
+    `
+})
+
+document.getElementById("postJobForm").addEventListener("submit", function(e){
+    e.preventDefault()
+
+    const title = document.getElementById("newTitle").value
+    const location = document.getElementById("newLocation").value
+
+    const jobDiv = document.createElement("div")
+    jobDiv.classList.add("job")
+
+    jobDiv.innerHTML = `
+        <h3>${title}</h3>
+        <p>Location: ${location}</p>
+    `
+
+    document.getElementById("jobList").appendChild(jobDiv)
+    document.getElementById("postJobForm").reset()
+})
+
+</script>
+
+</body>
+</html>
